@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Orelega+One&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Marmelad", sans-serif;
+}
+
+h1 {
+    font-family: "Orelega One", serif;
+}
+:root{
+    --pink: #F09EC4;
+    --secondary: #6B1D3B;
+    --lower: #ECECEC;
+    --black: #000000;
+    --darkpink: #AD5275;
+    --white: #FFFFFF;
+    --ultrapink:#F6E3EF;
+}
+
+
+
+/*elements*/
+.container {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+/* components*/
+.header{
+    background-color: var(--pink);
+    padding: 10px 10px;
+    
+}
+.btn-category {
+    cursor: pointer;
+}
+.second-block {
+    min-height: 100vh;
+    background-color: var(--ultrapink);
+}
+.second-block__header {
+    /* margin: 70px auto 10px;  */
+    /* padding: 8px 0; */
+    /* width: 208px; */
+    /* height: 39px; */
+    background-color: var(--pink); 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-family: "Orelega One", serif;
+    font-size: 24px;  
+    color: var(--black); 
+    text-align: center; 
+    display: block; 
+    margin: 20px 110px; 
+}
+.second-block__header_ {
+    background-color: var(--pink); 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    font-family: "Orelega One", serif;
+    font-size: 24px;  
+    color: var(--black); 
+    text-align: center; 
+    display: block;
+    /* margin: 30px auto; */
+    margin: 70px auto 10px; 
+    /* padding: 8px 0; */
+    width: 153px;
+    height: 46px;
+}
+.second-block-back {
+    background-color: var(--ultrapink);
+    padding: 10px;
+}
+
+/* categories */
+
+.category-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: 60px;
+}
+.category-item {
+    border: solid rgb(240 158 196 / 48%) 0px;
+    padding: 10px;
+    text-align: center;
+    border-top-right-radius: 50px;
+    border-radius: 5px 50px 5px 5px;
+    text-decoration: none;
+    color: var(--black);
+    background-color: rgb(240 158 196 / 48%) ; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 auto;
+    position: relative;
+}
+.category-item__body {
+    padding: 10px;
+}
+.category-item__title {
+    font-size: 16px;
+    font-family: "Marmelad", sans-serif;
+    color: var(--black);
+    display: block;
+    margin: 10px 0;
+}
+.category-item__cart {
+    width: 15px;
+    height: 15px;
+    display: block;
+    position: relative;
+    top: 3px;
+}
+.category-item__price1 {
+    font-size: 16px;
+    padding-top: 5px;
+    font-family: "Marmelad", sans-serif;
+    color: var(--black);
+    margin-bottom: 7px;
+    position: absolute;
+    right: 16px;
+    left: 16px;
+    bottom: 2px;
+}
+.category-item__price2 {
+    font-size: 16px;
+    padding-top: 10px;
+    font-family: "Marmelad", sans-serif;
+    color: var(--black);
+    margin: 5px;
+}
+.category-item__img {
+    justify-self: center;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    position: relative;
+    top: -10px;
+}
+
+.category-item__price1 {
+    font-size: 16px;
+    font-family: "Marmelad", sans-serif;
+    color: var(--secondary);
+    margin-top: 5px;
+}
+.price__cart {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    padding: 5px 10px;
+    gap: 5px;
+    right: -1px;
+    bottom: -10px;
+    margin-top: 10px;
+}
+/*  */
+
+
+/* cart */
+
+.cart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    background-color: rgb(240 158 196 / 48%);
+    border-radius: 20px;
+    margin: 10px 0;
+}
+.cart-item__title {
+    font-weight: bold;
+    font-family: "Marmelad", sans-serif;
+    font-size: 18px;
+}
+.cart-item__img {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+}
+.cart-item__details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 15px;
+}
+.price-and-quantity {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    top: 25px;
+}
+.quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+.cart-item__price {
+    display: block;
+    width: 70px;
+    font-family: "Marmelad", sans-serif;
+    margin-right: 20px;
+}
+.quantity-btn {
+    background-color: var(--secondary);
+    display: flex;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: var(--secondary);
+}
+.total-price {
+    font-family: "Orelega One", serif;
+    font-size: 24px;
+}
+.checkout-btn {
+    width: 100%;
+    padding: 10px;
+    font-family: "Orelega One", serif;
+    background-color: var(--darkpink);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/*  */
+
+
+
+.page-friend .header {
+    background-color: var(--pink);
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+}
+.page-friend .category-row {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    justify-content: center;
+    gap: 100px 40px;
+    padding: 20px 0;
+    margin: 16px 20px;
+}
+
+.page-friend .category-item {
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1.5px solid var(--pink);
+    padding: 30px;
+    text-align: center;
+    align-content: end;
+    border-radius: 30px;
+    transition: 0.3s ease-in-out;
+    background-color: var(--pink);
+    width: 160px;
+    height: 208px;
+}
+
+.page-friend .category-item__title {
+    color: var(--secondary);
+    font-family: "Orelega One", serif;
+    font-size: 30px;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.page-friend .category-item__img {
+    top: -20px;
+    margin: auto;
+    width: 89px;
+    height: 89px;
+}
