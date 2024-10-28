@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Marmelad&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Marmelad&family=Orelega+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 * {
     padding: 0;
     margin: 0;
@@ -36,8 +37,36 @@ h1 {
     padding: 10px 10px;
     
 }
+#menu-list {
+    background-color: var(--darkpink);
+    display: none;
+    padding: 10px 0;
+    position: relative;
+}
+.menu-list .menu-list__item {
+    list-style: none;
+}
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.menu-list__link img {
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+}
+.menu-list__link {
+    text-decoration: none;
+    color: var(--white);
+}
+.menu-list__title {
+    font-size: 20px;
+}
 .btn-category {
     cursor: pointer;
+    background-color: transparent;
+    border: none;
 }
 .second-block {
     min-height: 100vh;
@@ -56,7 +85,7 @@ h1 {
     color: var(--black); 
     text-align: center; 
     display: block; 
-    margin: 20px 110px; 
+    margin: 20px 60px; 
 }
 .second-block__header_ {
     background-color: var(--pink); 
@@ -101,9 +130,12 @@ h1 {
     align-items: center; 
     margin: 0 auto;
     position: relative;
+    width: 135px;
+    height: 230px;
 }
 .category-item__body {
     padding: 10px;
+    margin: 0 0 10px;
 }
 .category-item__title {
     font-size: 16px;
@@ -117,7 +149,7 @@ h1 {
     height: 15px;
     display: block;
     position: relative;
-    top: 3px;
+    top: 5px;
 }
 .category-item__price1 {
     font-size: 16px;
@@ -280,7 +312,6 @@ h1 {
     border: 1.5px solid var(--pink);
     padding: 30px;
     text-align: center;
-    align-content: end;
     border-radius: 30px;
     transition: 0.3s ease-in-out;
     background-color: var(--pink);
@@ -297,8 +328,62 @@ h1 {
 }
 
 .page-friend .category-item__img {
-    top: -20px;
+    top: -2px;
     margin: auto;
     width: 89px;
     height: 89px;
+}
+
+/* delivery */
+.delivery-address {
+    font-family: "Inter", serif;
+    font-size: 18px;
+    color: var(--darkpink);
+    font-weight: bold;
+}
+.delivery-entrance {
+    font-family: "Inter", serif;
+    font-size: 18px;
+    color: var(--darkpink);
+    font-weight: bold;
+}
+.delivery-apartment {
+    font-family: "Inter", serif;
+    font-size: 18px;
+    color: var(--darkpink);
+    font-weight: bold;
+}
+.delivery-comment {
+    font-family: "Inter", serif;
+    font-size: 18px;
+    color: var(--darkpink);
+    font-weight: bold;
+}
+
+/* links */
+.spanlink {
+    margin: 20px 5px;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    gap: 5px;
+    color: var(--secondary);
+}
+.linkif {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--secondary);
+}
+.btn-link {
+    width: 40%;
+    padding: 10px;
+    font-family: "Orelega One", serif;
+    background-color: var(--darkpink);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    cursor: pointer;
+    text-align: center;
+    margin: 10px 0;
 }
