@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <div class="conteiner">
+            <button class="btn-category" onclick="cakeMe()">
+                <img src="{% static './images/three-dots 2.svg' %}" alt="three-dots" />
+            </button>
+        </div>
+        
+    </header> 
+            <div id="menu-list" style="display: none;">
+                <div class="container">
+                    <ul class="menu-list">
+                        <li class="menu-list__item">
+                            <a href="{% url 'home_page' %}" class="menu-list__link">
+                                <img src="{% static './images/menu/house.svg' %}" alt="">
+                                <span class="menu-list__title">Главная</span>
+                            </a>
+                        </li>
+                        <li class="menu-list__item">
+                            <a href="{% url 'menu_page' %}" class="menu-list__link">
+                                <img src="{% static './images/menu/menu.svg' %}" alt="">
+                                <span class="menu-list__title">Меню</span>
+                            </a>
+                        </li>
+                        <li class="menu-list__item">
+                            <a href="#" class="menu-list__link">
+                                <img src="{% static './images/menu/delivery.svg' %}" alt="">
+                                <span class="menu-list__title">Доставка</span>
+                            </a>
+                        </li>
+                        <li class="menu-list__item">
+                            <a href="{% url 'view_cart' %}" class="menu-list__link">
+                                <img src="{% static './images/menu/cart.svg' %}" alt="">
+                                <span class="menu-list__title">Корзина</span>
+                            </a>
+                        </li>
+                        {% if not user.is_authenticated %}
+                        <li class="menu-list__item">
+                            <a href="{% url 'login_page' %}" class="menu-list__link">
+                                <img src="{% static './images/menu/login.svg' %}" alt="">
+                                <span class="menu-list__title">Вход</span>
+                            </a>
+                        </li>
+                        <li class="menu-list__item">
+                            <a href="{% url 'sign_up_page' %}" class="menu-list__link">
+                                <img src="{% static './images/menu/signup.svg' %}" alt="" class="register-icon">
+                                <span class="menu-list__title">Регистрация</span>
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="menu-list__item">
+                            <a href="{% url 'logout_action' %}" class="menu-list__link">
+                                <img src="{% static './images/menu/logout.svg' %}" alt="" class="logout-icon">
+                                <span class="menu-list__title">{{ user.username }} : Выход</span>
+                            </a>
+                        </li>
+                        
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+    <main>
+        <div class="second-block-back">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+
+    <script src="{% static './js/script.js' %}"></script>
+</body>
+</html>
+
+

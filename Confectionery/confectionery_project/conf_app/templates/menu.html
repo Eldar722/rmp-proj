@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Меню{% endblock %}
+
+
+
+{% block content %}
+<section class="second-block">
+    <div class="second-block-back">
+        <div class="second-block__header is-pink">
+            Меню
+        </div>
+
+        <div class="container">
+            <div class="menu-category-row">
+                {% for category in categories %}
+                <a href="{% url 'category_page' category.slug %}" class="menu-category-item">
+                    <div class="container-item">
+                        <img src="{{ category.image.url }}" alt="" class="menu-category-item__img" />
+                        <span class="menu-category-item__title">{{ category.name }}</span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

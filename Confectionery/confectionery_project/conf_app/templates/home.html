@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+<section class="second-block">
+    <div class="second-block__header is-pink">
+        Новинки
+    </div>
+    <div class="container">
+        <div class="category-row">
+            {% for product in products %}
+            <div class="category-item">
+                <a href="#" class="add-to-cart" data-product-id="{{ product.id }}">
+                    <img src="{{ product.image.url }}" alt="cupcake" class="category-item__img" />
+                    <div class="category-item__body">
+                        <span class="category-item__title">{{ product.title }}</span>
+                        <p class="category-item__price1">{{ product.price }} &#8376;</p>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script src="{% static './js/cart.js' %}"></script>
+{% endblock %}

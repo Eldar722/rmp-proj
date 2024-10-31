@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ category.name }}{% endblock %}
+
+
+{% block content %}
+<section class="second-block">
+    <div class="second-block__header is-pink">
+        {{ category.name }}
+    </div>
+    <div class="container">
+        <div class="category-row">
+
+            {% for bun in buns %}
+
+            <a href="#" class="category-item">
+                <img src="{% static './images/croissant.png' %}" alt="croissant" class="category-item__img" />
+                <div class="category-item__body">
+                  <span class="category-item__title">{{ bun.title }}</span>
+                    <div class="price__cart">
+                     <p class="category-item__price2">{{ bun.price }} &#8376;</p>
+                     <img src="{% static './images/cart-icon.png' %}" alt="cart-icon" class="category-item__cart" />
+                    </div>
+                </div>
+            </a>
+
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+{% endblock %}

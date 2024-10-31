@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ category.name }}{% endblock %}
+
+
+{% block content %}
+<section class="second-block">
+    <div class="second-block__header is-pink">
+        {{ category.name }}
+    </div>
+    <div class="container">
+        <div class="category-row">
+
+            {% for product in products %}
+
+            <div class="category-item">
+                <a href="#" class="add-to-cart" data-product-id="{{ product.id }}">
+                    <img src="{{ product.image.url }}" class="category-item__img" />
+                    <div class="category-item__body">
+                      <span class="category-item__title">{{ product.title }}</span>
+                        <div class="price__cart">
+                         <p class="category-item__price2">{{ product.price }} &#8376;</p>
+                         <img src="{% static './images/cart-icon.png' %}" alt="cart-icon" class="category-item__cart" />
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+<script src="{% static './js/cart.js' %}"></script>
+{% endblock %}

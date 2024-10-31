@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<section class="second-block">
+    <div class="second-block__header is-pink">
+        Доставка
+    </div>
+    <div class="container">
+        
+    </div>
+    <div class="cart-total">
+        <span class="total-price">Общая сумма:</span>
+        <span class="total-price">3100 тг</span>
+    </div>
+    <button class="checkout-btn">Оформить заказ</button>
+</section>
+{% else %}
+<section class="access">
+    <div class="container">
+        <h1 class="title">Вы не авторизировались</h1>
+        <p class="reminder-to-auth">Чтобы сделать заказ, Вам необходимо авторизовать либо зарегистрироваться</p>
+        <div class="access-action">
+            <a href="{% url 'sign_up_page' %}" class="button-auth">Регистрация</a>
+            <a href="{% url 'login_page' %}" class="button-auth">Вход</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
