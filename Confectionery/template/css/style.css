@@ -73,10 +73,6 @@ h1 {
     background-color: var(--ultrapink);
 }
 .second-block__header {
-    /* margin: 70px auto 10px;  */
-    /* padding: 8px 0; */
-    /* width: 208px; */
-    /* height: 39px; */
     background-color: var(--pink); 
     padding: 10px 20px; 
     border-radius: 20px; 
@@ -85,7 +81,9 @@ h1 {
     color: var(--black); 
     text-align: center; 
     display: block; 
-    margin: 20px 60px; 
+    margin: 40px 60px;
+    position: relative;
+    top: -15px;
 }
 .second-block__header_ {
     background-color: var(--pink); 

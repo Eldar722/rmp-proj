@@ -66,4 +66,4 @@ class CartItem(models.Model):
     quantity = models.PositiveIntegerField(default=1)
 
     def total_price(self):
-        return float(self.product.price) * self.quantity
+        return self.product.price * self.quantity

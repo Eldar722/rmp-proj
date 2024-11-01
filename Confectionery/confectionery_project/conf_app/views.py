@@ -86,8 +86,8 @@ def add_to_cart(request, product_id):
     total_sum = sum(item.total_price() for item in CartItem.objects.all())
     
     return JsonResponse({
-        'product_name': product.name,
-        'product_price': float(product.price),
+        'product_title': product.title,
+        'product_price': (product.price),
         'quantity': cart_item.quantity,
         'total_sum': total_sum
     })
@@ -115,14 +115,30 @@ def increase_quantity(request, cart_item_id):
     
     return JsonResponse({'quantity': cart_item.quantity, 'total_sum': total_sum})
 
+# def decrease_quantity(request, cart_item_id):
+#     cart_item = get_object_or_404(CartItem, id=cart_item_id)
+#     if cart_item.quantity > 1:
+#         cart_item.quantity -= 1
+#     else:
+#         cart_item.delete()  # Удаляем товар, если количество 0
+#     total_sum = sum(item.total_price() for item in CartItem.objects.all())
+    
+#     return JsonResponse({'quantity': cart_item.quantity if cart_item.id else 0, 'total_sum': total_sum})
+
 def decrease_quantity(request, cart_item_id):
+    print(f"Запрос на уменьшение количества для элемента с ID: {cart_item_id}")
+    
     cart_item = get_object_or_404(CartItem, id=cart_item_id)
+    print(f"Найден элемент корзины: {cart_item}")
+
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
+        cart_item.save()
+        print(f"Количество уменьшено. Новое количество: {cart_item.quantity}")
     else:
-        cart_item.delete()  # Удаляем товар, если количество 0
-    total_sum = sum(item.total_price() for item in CartItem.objects.all())
-    
-    return JsonResponse({'quantity': cart_item.quantity if cart_item.id else 0, 'total_sum': total_sum})
+        cart_item.delete()
+        print(f"Элемент корзины удалён, так как его количество достигло 0.")
+
+    return redirect('view_cart')
 
 

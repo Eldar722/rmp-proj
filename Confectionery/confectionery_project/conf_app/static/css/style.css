@@ -433,3 +433,32 @@ h1 {
 .add-to-cart {
     text-decoration: none;
 }
+
+
+/* message */
+#toast-container {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.toast {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 4px;
+    margin-top: 10px;
+    opacity: 0;
+    transform: translateY(-20px); /* Начальное положение для анимации */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(30px); /* Позиция, к которой блок "выползает" */
+}
