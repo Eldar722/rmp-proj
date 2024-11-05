@@ -1,5 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Bun, Cookie, Cake, Cupcake, Product, CartItem
+from .models import Category, Bun, Cookie, Cake, Cupcake, Product, CartItem, Delivery
+from .forms import DeliveryForm
+from django import forms
+from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from .forms import NewUserForm
 from django.contrib.auth.forms import AuthenticationForm
@@ -8,7 +11,7 @@ from django.http import JsonResponse
 
 def home_page(request):
     categories = Category.objects.all()
-    products = Product.objects.all().order_by('-added_at')[:6]
+    products = Product.objects.all().order_by('-added_at')[:10]
     context = {
         'categories': categories,  
         'products': products
@@ -87,7 +90,7 @@ def add_to_cart(request, product_id):
     
     return JsonResponse({
         'product_title': product.title,
-        'product_price': (product.price),
+        'product_price': product.price,
         'quantity': cart_item.quantity,
         'total_sum': total_sum
     })
@@ -115,16 +118,6 @@ def increase_quantity(request, cart_item_id):
     
     return JsonResponse({'quantity': cart_item.quantity, 'total_sum': total_sum})
 
-# def decrease_quantity(request, cart_item_id):
-#     cart_item = get_object_or_404(CartItem, id=cart_item_id)
-#     if cart_item.quantity > 1:
-#         cart_item.quantity -= 1
-#     else:
-#         cart_item.delete()  # Удаляем товар, если количество 0
-#     total_sum = sum(item.total_price() for item in CartItem.objects.all())
-    
-#     return JsonResponse({'quantity': cart_item.quantity if cart_item.id else 0, 'total_sum': total_sum})
-
 def decrease_quantity(request, cart_item_id):
     print(f"Запрос на уменьшение количества для элемента с ID: {cart_item_id}")
     
@@ -141,4 +134,58 @@ def decrease_quantity(request, cart_item_id):
 
     return redirect('view_cart')
 
+# def delivery(request):
+#     if request.method == 'POST':
+#         form = DeliveryForm(request.POST)
+#         if form.is_valid():
+#             form.save()  # Сохранение данных в БД
+#             return redirect('success_page')
+            
+#     else:
+#         form = DeliveryForm()
 
+    
+#     return render(request, './delivery.html', {'form': form})
+
+def delivery(request):
+    cart_items = CartItem.objects.all()
+    total_sum = sum(item.total_price() for item in cart_items)
+
+    if request.method == 'POST':
+        form = DeliveryForm(request.POST)
+        if form.is_valid():
+            form.save()  # Сохранение данных в БД
+            return redirect('success_page')
+    else:
+        form = DeliveryForm()
+
+    return render(request, './delivery.html', {
+        'form': form,
+        'total_sum': total_sum,
+    })
+
+def success_page(request):
+    return render(request, './success.html') 
+
+def complete_order(request):
+    # Получаем все позиции корзины пользователя
+    cart_items = CartItem.objects.filter(user=request.user)
+    if not cart_items:
+        return JsonResponse({'error': 'Корзина пуста.'}, status=400)
+
+    # Создаем новый объект Delivery и связываем его с позициями корзины
+    delivery = Delivery.objects.create(
+        address="Адрес клиента",
+        entrance="Подъезд клиента",
+        apartment="Квартира клиента",
+        comm_for_order="Комментарий клиента"
+    )
+    
+    # Связываем все позиции корзины с созданной доставкой
+    delivery.cart_items.set(cart_items)
+    delivery.save()
+
+    # После оформления заказа очищаем корзину
+    cart_items.delete()
+
+    return JsonResponse({'success': 'Заказ оформлен и доставка создана.'})

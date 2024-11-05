@@ -42,3 +42,25 @@
     
 </body>
 </html>
+
+
+
+
+<section class="second-block">
+    <div class="second-block__header is-pink">
+        Доставка
+    </div>
+    <div class="container">
+        <div class="delivery">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+            </form>
+        </div>
+    </div>
+    <div class="cart-total">
+        <span class="total-price">Общая сумма:</span>
+        <span class="total-price">3100 тг</span>
+    </div>
+    <button type="submit" class="checkout-btn" form="delivery-form">Оформить заказ</button> 
+</section>

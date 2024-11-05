@@ -28,9 +28,11 @@
         
         <div class="cart-total">
             <span class="total-price">Общая сумма:</span>
-            <span class="total-price" id="total-sum">{{ total_sum }} &#8376; </span>
+            <span class="total-price" id="total-sum">{{total_sum}}&#8376;</span>
         </div>
-        <button class="checkout-btn">Далее</button>
+        <a href="{% url 'delivery' %}">
+            <button class="checkout-btn">Далее</button>
+        </a>
     </div>
 </section>
 

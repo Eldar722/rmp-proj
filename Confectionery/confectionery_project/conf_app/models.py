@@ -1,7 +1,7 @@
 from django.db import models
 from pytils.translit import slugify
 from datetime import datetime
-
+from django.contrib.auth.models import User
 
 class Category(models.Model):
     name = models.CharField("Название категории", max_length=255)
@@ -67,3 +67,20 @@ class CartItem(models.Model):
 
     def total_price(self):
         return self.product.price * self.quantity
+
+    def __str__(self):
+        return f"{self.product.title} (x{self.quantity})"
+    
+class Delivery(models.Model):
+    address = models.CharField(max_length=255, verbose_name="Адрес доставки", default='')
+    entrance = models.CharField(max_length=20, verbose_name="Подъезд", default='')
+    apartment = models.CharField(max_length=20, verbose_name="Квартира", default='')
+    comm_for_order = models.CharField(max_length=255, verbose_name="Комментарий к заказу", default='')
+    cart_items = models.ManyToManyField(CartItem, related_name='deliveries', verbose_name="Позиции корзины")    
+
+    class Meta:
+        verbose_name = 'Доставка'
+        verbose_name_plural = 'Доставки'
+
+    def __str__(self):
+        return self.address

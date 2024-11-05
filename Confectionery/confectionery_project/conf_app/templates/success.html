@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Заказ оформлен{% endblock %}
+
+{% block content %}
+<section class="success-section">
+    <div class="success-container">
+        <h1 class="success-title">Спасибо за ваш заказ!</h1>
+        <p class="success-message">Ваш заказ был успешно оформлен. Мы свяжемся с вами в ближайшее время.</p>
+        <div class="buttons">
+            <a href="{% url 'delivery' %}" class="order-to-button">Отправить еще</a>
+            <a href="{% url 'home_page' %}" class="home-to-button">Вернуться на главную страницу</a>
+        </div>
+    </div>
+</section>
+{% endblock %}
